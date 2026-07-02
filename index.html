@@ -87,3 +87,48 @@ button.action {
 </header>
 
 <nav>
+<script>
+function showSection(sectionId) {
+  document.querySelectorAll(".section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document.getElementById(sectionId).classList.add("active");
+}
+
+function sendMessage() {
+  let input = document.getElementById("userInput").value.toLowerCase();
+  let response = "";
+
+  if (input.includes("math")) {
+    response = "📚 Math tip: Practice daily.";
+  }
+  else if (input.includes("exam")) {
+    response = "📝 Exam tip: Solve past exams.";
+  }
+  else if (input.includes("study")) {
+    response = "📖 Study tip: Use Pomodoro.";
+  }
+  else {
+    response = "🤖 Try: math / exam / study";
+  }
+
+  document.getElementById("response").innerText = response;
+}
+
+function addNote() {
+  let note = document.getElementById("noteInput").value;
+
+  if (note === "") return;
+
+  let div = document.createElement("div");
+  div.className = "card";
+  div.innerText = note;
+
+  document.getElementById("notesList").appendChild(div);
+  document.getElementById("noteInput").value = "";
+}
+</script>
+
+</body>
+</html>
