@@ -1,46 +1,56 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yara Campus AI</title>
+  <title>Yara Campus</title>
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       background: #0f172a;
       color: white;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
       background: #1e293b;
-      padding: 18px;
+      padding: 15px;
       text-align: center;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
     }
 
-    main {
-      flex: 1;
-      padding: 20px;
+    nav {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      justify-content: space-around;
+      background: #111827;
+      padding: 10px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+    }
+
+    .active {
+      display: block;
     }
 
     .card {
       background: #1e293b;
       padding: 15px;
       border-radius: 12px;
-    }
-
-    h3 {
-      margin-top: 0;
+      margin-bottom: 10px;
     }
 
     input {
@@ -48,25 +58,18 @@
       padding: 12px;
       border-radius: 10px;
       border: none;
-      outline: none;
       margin-top: 10px;
     }
 
-    button {
+    button.action {
       margin-top: 10px;
       padding: 12px;
       width: 100%;
-      border: none;
       border-radius: 10px;
+      border: none;
       background: #38bdf8;
-      color: black;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:active {
-      transform: scale(0.97);
     }
 
     #response {
@@ -74,14 +77,7 @@
       padding: 10px;
       background: #0b1220;
       border-radius: 10px;
-      min-height: 50px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 12px;
-      opacity: 0.6;
+      min-height: 40px;
     }
   </style>
 </head>
@@ -89,61 +85,70 @@
 <body>
 
   <header>
-    🎓 Yara Campus AI
+    🎓 Yara Campus Pro
   </header>
 
-  <main>
+  <!-- NAV -->
+  <nav>
+    <button onclick="show('courses')">Courses</button>
+    <button onclick="show('ai')">AI</button>
+    <button onclick="show('notes')">Notes</button>
+  </nav>
 
-    <!-- Courses -->
+  <!-- COURSES -->
+  <div id="courses" class="section active">
     <div class="card">
       <h3>📚 Courses</h3>
       <p>✔ Math</p>
       <p>✔ English</p>
       <p>✔ Computer Science</p>
     </div>
+  </div>
 
-    <!-- AI Section -->
+  <!-- AI -->
+  <div id="ai" class="section">
     <div class="card">
-      <h3>🤖 Study AI Assistant</h3>
+      <h3>🤖 AI Assistant</h3>
 
-      <input id="userInput" type="text" placeholder="Ask: math, study, exam, plan...">
+      <input id="userInput" type="text" placeholder="Ask something...">
 
-      <button onclick="sendMessage()">Ask AI</button>
+      <button class="action" onclick="sendMessage()">Ask AI</button>
 
-      <div id="response">AI will answer here...</div>
+      <div id="response">AI response...</div>
     </div>
+  </div>
 
-  </main>
-
-  <footer>
-    Made for students ❤️
-  </footer>
+  <!-- NOTES -->
+  <div id="notes" class="section">
+    <div class="card">
+      <h3>📝 Notes</h3>
+      <p>- Revise math formulas</p>
+      <p>- English vocabulary daily</p>
+      <p>- Practice coding</p>
+    </div>
+  </div>
 
   <script>
+    function show(section) {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+      document.getElementById(section).classList.add("active");
+    }
+
     function sendMessage() {
       let input = document.getElementById("userInput").value.toLowerCase();
       let response = "";
 
-      if (input.includes("hello") || input.includes("hi")) {
-        response = "👋 Hello student! Ready to study?";
-      }
-      else if (input.includes("math")) {
-        response = "📚 Math tip: Practice daily exercises and understand formulas.";
+      if (input.includes("math")) {
+        response = "📚 Practice exercises daily";
       }
       else if (input.includes("english")) {
-        response = "📖 English tip: Learn 10 words per day + read short texts.";
+        response = "📖 Learn 10 words daily";
       }
       else if (input.includes("exam")) {
-        response = "📝 Exam tip: Revise summaries and solve past exams.";
-      }
-      else if (input.includes("plan")) {
-        response = "📅 Study plan: 2h study + 30min break + repeat.";
-      }
-      else if (input.includes("study")) {
-        response = "📖 Study tip: Use Pomodoro technique (25min study / 5min break).";
+        response = "📝 Revise summaries + past exams";
       }
       else {
-        response = "🤖 Try: math / english / exam / plan / study";
+        response = "🤖 Try: math / english / exam";
       }
 
       document.getElementById("response").innerText = response;
@@ -152,4 +157,4 @@
 
 </body>
 
-</html>>
+</html>
