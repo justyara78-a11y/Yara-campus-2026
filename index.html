@@ -1,10 +1,10 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI App</title>
+  <title>Yara Campus AI</title>
 
   <style>
     body {
@@ -12,6 +12,9 @@
       font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -27,6 +30,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      flex: 1;
     }
 
     .card {
@@ -35,7 +39,17 @@
       border-radius: 12px;
     }
 
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin-top: 10px;
+    }
+
     button {
+      margin-top: 10px;
       padding: 12px;
       border: none;
       border-radius: 10px;
@@ -49,11 +63,12 @@
       background: #0ea5e9;
     }
 
-    input {
-      padding: 12px;
+    #response {
+      margin-top: 10px;
+      padding: 10px;
+      background: #0b1220;
       border-radius: 10px;
-      border: none;
-      outline: none;
+      min-height: 40px;
     }
 
     footer {
@@ -68,31 +83,37 @@
 <body>
 
   <header>
-    🤖 My AI App
+    🎓 Yara Campus AI
   </header>
 
   <main>
 
     <div class="card">
-      <h3>Ask AI</h3>
-      <input type="text" placeholder="Type something...">
-      <br><br>
-      <button>Send</button>
-    </div>
+      <h3>📚 AI Study Assistant</h3>
 
-    <div class="card">
-      <h3>Quick Buttons</h3>
-      <button>AI Chat</button>
-      <button>Generate</button>
-      <button>Help</button>
+      <input id="userInput" type="text" placeholder="Ask something (math, study, hello...)">
+
+      <button onclick="sendMessage()">Send</button>
+
+      <div id="response">🤖 AI response will appear here...</div>
     </div>
 
   </main>
 
   <footer>
-    Made with ❤️
+    Made for students ❤️
   </footer>
 
-</body>
+  <script>
+    function sendMessage() {
+      let input = document.getElementById("userInput").value.toLowerCase();
+      let response = "";
 
-</html>
+      if (input.includes("hello") || input.includes("hi")) {
+        response = "👋 Hello! How can I help you with your studies?";
+      }
+      else if (input.includes("math")) {
+        response = "📚 Math tip: Practice exercises every day to improve fast!";
+      }
+      else if (input.includes("study")) {
+        response = "📖 Study tip: Use
