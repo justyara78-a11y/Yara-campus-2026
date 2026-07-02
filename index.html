@@ -1,134 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yara Campus AI</title>
+ 🎓 Yara Campus AI Home AI Notes Grades
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
-}
+Dashboard
+Welcome to Yara Campus.
 
-header {
-  background: #1e293b;
-  padding: 20px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-}
+📚 Courses
+Math
+English
+Computer Science
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  background: #111827;
-  padding: 15px;
-}
 
-nav button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
+🤖 AI Assistant
+Ask AI
+AI response here...
 
-.section {
-  display: none;
-  padding: 20px;
-}
 
-.active {
-  display: block;
-}
+📝 Notes
+Add Note
 
-.card {
-  background: #1e293b;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
 
-input, button.action {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-}
-
-button.action {
-  background: #38bdf8;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#response {
-  margin-top: 10px;
-  background: #0b1220;
-  padding: 10px;
-  border-radius: 10px;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-🎓 Yara Campus AI
-</header>
-
-<nav>
-<script>
-function showSection(sectionId) {
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
-  });
-
-  document.getElementById(sectionId).classList.add("active");
-}
-
-function sendMessage() {
-  let input = document.getElementById("userInput").value.toLowerCase();
-  let response = "";
-
-  if (input.includes("math")) {
-    response = "📚 Math tip: Practice daily.";
-  }
-  else if (input.includes("exam")) {
-    response = "📝 Exam tip: Solve past exams.";
-  }
-  else if (input.includes("study")) {
-    response = "📖 Study tip: Use Pomodoro.";
-  }
-  else {
-    response = "🤖 Try: math / exam / study";
-  }
-
-  document.getElementById("response").innerText = response;
-}
-
-function addNote() {
-  let note = document.getElementById("noteInput").value;
-
-  if (note === "") return;
-
-  let div = document.createElement("div");
-  div.className = "card";
-  div.innerText = note;
-
-  document.getElementById("notesList").appendChild(div);
-  document.getElementById("noteInput").value = "";
-}
-</script>
-
-</body>
-</html>
+📊 Grades
+Math: 16/20
+English: 18/20
+Computer Science: 19/20
