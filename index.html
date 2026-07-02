@@ -1,25 +1,173 @@
- 🎓 Yara Campus AI Home AI Notes Grades
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yara Campus Premium</title>
 
-Dashboard
-Welcome to Yara Campus.
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-📚 Courses
-Math
-English
-Computer Science
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
 
+header{
+padding:20px;
+text-align:center;
+background:#111827;
+font-size:24px;
+font-weight:bold;
+}
 
-🤖 AI Assistant
-Ask AI
-AI response here...
+nav{
+display:flex;
+justify-content:space-around;
+padding:12px;
+background:#1e293b;
+}
 
+nav button{
+background:none;
+border:none;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
 
-📝 Notes
-Add Note
+.section{
+display:none;
+padding:20px;
+}
 
+.active{
+display:block;
+}
 
-📊 Grades
-Math: 16/20
-English: 18/20
-Computer Science: 19/20
+.card{
+background:#1e293b;
+padding:16px;
+border-radius:16px;
+margin-bottom:16px;
+}
+
+input,button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+margin-top:10px;
+}
+
+button{
+background:#38bdf8;
+font-weight:bold;
+}
+
+.note{
+background:#0b1220;
+padding:10px;
+border-radius:12px;
+margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🎓 Yara Campus Premium</header>
+
+<nav>
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('ai')">AI</button>
+<button onclick="showSection('notes')">Notes</button>
+<button onclick="showSection('grades')">Grades</button>
+</nav>
+
+<div id="home" class="section active">
+<div class="card">
+<h2>Dashboard</h2>
+<p>Welcome to Yara Campus.</p>
+</div>
+
+<div class="card">
+<h3>📚 Courses</h3>
+<p>Math</p>
+<p>English</p>
+<p>Computer Science</p>
+</div>
+
+<div class="card">
+<h3>🔔 Notifications</h3>
+<p>Exam in 3 days</p>
+</div>
+</div>
+
+<div id="ai"
+<div id="notes" class="section">
+<div class="card">
+<h2>📝 Notes</h2>
+
+<input id="noteInput" placeholder="Write note...">
+<button onclick="addNote()">Add Note</button>
+
+<div id="notesList"></div>
+</div>
+</div>
+
+<div id="grades" class="section">
+<div class="card">
+<h2>📊 Grades</h2>
+<p>Math: 16/20</p>
+<p>English: 18/20</p>
+<p>Computer Science: 19/20</p>
+<p>GPA: 17.6</p>
+</div>
+</div>
+
+<script>
+function showSection(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function sendMessage(){
+let input=document.getElementById('userInput').value.toLowerCase();
+let response="🤖 Try math / exam / study";
+
+if(input.includes('math')){
+response="📚 Practice math daily.";
+}
+else if(input.includes('exam')){
+response="📝 Revise past exams.";
+}
+else if(input.includes('study')){
+response="📖 Use Pomodoro.";
+}
+
+document.getElementById('response').innerText=response;
+}
+
+function addNote(){
+let text=document.getElementById('noteInput').value;
+
+if(!text) return;
+
+let div=document.createElement('div');
+div.className='note';
+div.innerText=text;
+
+document.getElementById('notesList').appendChild(div);
+document.getElementById('noteInput').value='';
+}
+</script>
+
+</body>
+</html>
