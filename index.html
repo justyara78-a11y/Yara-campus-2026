@@ -21,22 +21,26 @@
       background: #1e293b;
       padding: 18px;
       text-align: center;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
     }
 
     main {
+      flex: 1;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      flex: 1;
+      gap: 15px;
     }
 
     .card {
       background: #1e293b;
       padding: 15px;
       border-radius: 12px;
+    }
+
+    h3 {
+      margin-top: 0;
     }
 
     input {
@@ -51,16 +55,18 @@
     button {
       margin-top: 10px;
       padding: 12px;
+      width: 100%;
       border: none;
       border-radius: 10px;
       background: #38bdf8;
       color: black;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
     }
 
-    button:hover {
-      background: #0ea5e9;
+    button:active {
+      transform: scale(0.97);
     }
 
     #response {
@@ -68,14 +74,14 @@
       padding: 10px;
       background: #0b1220;
       border-radius: 10px;
-      min-height: 40px;
+      min-height: 50px;
     }
 
     footer {
       text-align: center;
       padding: 10px;
       font-size: 12px;
-      opacity: 0.7;
+      opacity: 0.6;
     }
   </style>
 </head>
@@ -88,14 +94,23 @@
 
   <main>
 
+    <!-- Courses -->
     <div class="card">
-      <h3>📚 AI Study Assistant</h3>
+      <h3>📚 Courses</h3>
+      <p>✔ Math</p>
+      <p>✔ English</p>
+      <p>✔ Computer Science</p>
+    </div>
 
-      <input id="userInput" type="text" placeholder="Ask something (math, study, hello...)">
+    <!-- AI Section -->
+    <div class="card">
+      <h3>🤖 Study AI Assistant</h3>
 
-      <button onclick="sendMessage()">Send</button>
+      <input id="userInput" type="text" placeholder="Ask: math, study, exam, plan...">
 
-      <div id="response">🤖 AI response will appear here...</div>
+      <button onclick="sendMessage()">Ask AI</button>
+
+      <div id="response">AI will answer here...</div>
     </div>
 
   </main>
@@ -110,16 +125,25 @@
       let response = "";
 
       if (input.includes("hello") || input.includes("hi")) {
-        response = "👋 Hello! How can I help you with your studies?";
+        response = "👋 Hello student! Ready to study?";
       }
       else if (input.includes("math")) {
-        response = "📚 Math tip: Practice exercises every day to improve fast!";
+        response = "📚 Math tip: Practice daily exercises and understand formulas.";
+      }
+      else if (input.includes("english")) {
+        response = "📖 English tip: Learn 10 words per day + read short texts.";
+      }
+      else if (input.includes("exam")) {
+        response = "📝 Exam tip: Revise summaries and solve past exams.";
+      }
+      else if (input.includes("plan")) {
+        response = "📅 Study plan: 2h study + 30min break + repeat.";
       }
       else if (input.includes("study")) {
-        response = "📖 Study tip: Use Pomodoro method (25min study + 5min break)";
+        response = "📖 Study tip: Use Pomodoro technique (25min study / 5min break).";
       }
       else {
-        response = "🤖 I am a simple AI for study help. Try: math / study / hello";
+        response = "🤖 Try: math / english / exam / plan / study";
       }
 
       document.getElementById("response").innerText = response;
@@ -128,4 +152,4 @@
 
 </body>
 
-</html>
+</html>>
