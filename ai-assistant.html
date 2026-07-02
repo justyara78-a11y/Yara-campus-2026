@@ -53,6 +53,39 @@
     <div class="message user">Show my assignments</div>
     <div class="message bot">You have 3 pending assignments this week.</div>
   </div>
+<div style="padding:20px;">
+  <input id="userInput" type="text" placeholder="Ask AI..."
+    style="width:70%;padding:12px;border-radius:10px;border:1px solid #ccc;">
+  <button onclick="sendMessage()"
+    style="padding:12px 18px;border:none;border-radius:10px;background:#4f46e5;color:white;">
+    Send
+  </button>
+</div>
 
+<script>
+function sendMessage() {
+  let input = document.getElementById("userInput");
+  let message = input.value.toLowerCase();
+  
+  if (message === "") return;
+
+  let chatBox = document.querySelector(".chat-box");
+
+  chatBox.innerHTML += `<div class="message user">${input.value}</div>`;
+
+  let reply = "I can help with assignments, courses, and schedules.";
+
+  if (message.includes("assignment")) {
+    reply = "You have 3 pending assignments this week.";
+  } else if (message.includes("course")) {
+    reply = "Today's courses: Mathematics and Computer Science.";
+  } else if (message.includes("schedule")) {
+    reply = "Your next class starts at 10:00 AM.";
+  }
+
+  chatBox.innerHTML += `<div class="message bot">${reply}</div>`;
+  input.value = "";
+}
+</script>
 </body>
 </html>
